@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const express = require('express');
 const http = require('http');
 const socketIo = require('socket.io');
@@ -5,10 +7,10 @@ const cors = require('cors');
 
 const app = express();
 const server = http.createServer(app);
-const PORT = 5000;
+const PORT = process.env.PORT || 5000; // Use environment variable PORT
 const io = socketIo(server, {
   cors: {
-    origin: "http://localhost:3000", // Allow frontend origin
+    origin: "https://check-app-fm9f.vercel.app/", // Update to your frontend's Vercel URL
     methods: ["GET", "POST"]
   }
 });
@@ -32,8 +34,6 @@ io.on('connection', (socket) => {
             io.emit('message', message);
         } catch (error) {
             console.error('Error broadcasting message:', error.message);
-            // Handle error accordingly, e.g., emit an error event back to the client
-            // socket.emit('error', { message: 'An error occurred while broadcasting the message.' });
         }
     });
 });
