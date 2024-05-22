@@ -10,8 +10,7 @@ const server = http.createServer(app);
 const PORT = process.env.PORT || 5000; // Use environment variable PORT
 const io = socketIo(server, {
   cors: {
-    origin: "https://check-app-fm9f.vercel.app/", // Update to your frontend's Vercel URL
-    methods: ["GET", "POST"]
+    origin: "https://check-app-3xho.vercel.app/", // Update to your frontend's Vercel URL
   }
 });
 
